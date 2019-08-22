@@ -1,6 +1,6 @@
 
 # Bonus
-Para iniciar con la aplicacion despues de bajarla y hubicarse en la carpeta se abre una terminal y se tiran los comandos
+Para iniciar con la aplicacion despues de bajarla y ubicarse en la carpeta se abre una terminal y se tiran los comandos
 composser install
 php artisan migrate:fresh --seed
 php artisan serve
