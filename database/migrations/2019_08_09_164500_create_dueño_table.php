@@ -13,11 +13,12 @@ class CreateDueñoTable extends Migration
      */
     public function up()
     {
-        Schema::create('dueño', function (Blueprint $table) {
+        Schema::create('dueno', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('nombre');
-            $table->string('cedula')->unique();
+            $table->bigInteger('cedula')->unique();
+
         });
     }
 
@@ -28,6 +29,9 @@ class CreateDueñoTable extends Migration
      */
     public function down()
     {
+
+        Schema::dropIfExists('dueno');
+
         //
     }
 }

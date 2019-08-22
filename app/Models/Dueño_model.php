@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Dueño_model extends Model
 {
 
-    protected $table = 'dueño';
+    protected $table = 'dueno';
     protected $fillable = [
         'nombre',
         'cedula',

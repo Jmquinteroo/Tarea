@@ -45,18 +45,36 @@ class Admin_Vehiculo extends Controller
 
         $request->validate([
             'nombre'=>'required|string',
-            'cedula'=>'required',
+            'cedula'=>'required|numeric|unique:dueno|min:8',
             'marca'=>'required|string|exists:vehiculo',
-            'placa'=>'required|string',
+            'placa'=>'required|string|unique:vehiculo',
         ]);
 
 
 
 
         $Dueño_model = new Dueño_model($request->all());
-        $Dueño_model->save();
-        $Vehiculo_model = new Vehiculo_model($request->all());
+
+
+
+
+
+        $input = (object)$request;
+        $Vehiculo_model = new Vehiculo_model();
+
+        $Vehiculo_model->marca = $input->marca;
+        $Vehiculo_model->placa = $input->placa;
+
+        $dueno=$Dueño_model->save();
+        $Vehiculo_model->id_dueno=$dueno;
         $Vehiculo_model->save();
+
+        $Dueño_model->save();
+
+
+
+
+
 
       return (view('zonainicio'));
         //

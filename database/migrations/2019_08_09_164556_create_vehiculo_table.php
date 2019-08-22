@@ -18,6 +18,13 @@ class CreateVehiculoTable extends Migration
             $table->timestamps();
             $table->string('marca');
             $table->string('placa')->unique();
+            $table->bigInteger('id_dueno')->unsigned();
+
+            $table->foreign('id_dueno')
+                ->references('id')
+                ->on('dueno')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
 
         });
     }
